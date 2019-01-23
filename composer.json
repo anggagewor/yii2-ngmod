@@ -1,0 +1,47 @@
+{
+  "name": "anggagewor/yii2-ngmod",
+  "description": ":package_description",
+  "type": "yii2-extention",
+  "keywords": [
+    "anggagewor",
+    "yii",
+    "yii2",
+    "yii 2",
+    "extension",
+    "yii2-extention",
+    "yii2-ngmod"
+  ],
+  "homepage": "https://github.com/anggagewor/yii2-ngmod",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Angga Purnama",
+      "email": "anggagewor@gmail.com",
+      "homepage": "https://fb.com/anggagewor",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/anggagewor/yii2-ngmod/issues",
+    "source": "https://github.com/anggagewor/yii2-ngmod"
+  },
+  "require": {
+    "yiisoft/yii2": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "friendsofphp/php-cs-fixer": "^2.0",
+    "squizlabs/php_codesniffer": "*",
+    "phpmd/phpmd": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Anggagewor\\Ngmod\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
