@@ -1,7 +1,7 @@
 <?php
 /**
  * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
- * Copyright 2018 - Angga Purnama <anggagewor@gmail.com>
+ * Copyright 2019 - Angga Purnama <anggagewor@gmail.com>
  * Permission is hereby granted, free of charge,
  * to any person obtaining a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction,
@@ -18,6 +18,44 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+if ( !function_exists('issetNull') ) {
+
+    /**
+     * @param $arg
+     * @param $string
+     *
+     * @return mixed|null
+     */
+    function issetNull( $arg, $string )
+    {
+        if ( is_array($arg) ) {
+            return isset($arg[ $string ]) ? $arg[ $string ] : null;
+        }
+
+        if ( is_object($arg) ) {
+            return isset($arg->$string) ? $arg->$string : null;
+        }
+    }
+}
+
+if ( !function_exists('issetString') ) {
+    /**
+     * @param $arg
+     * @param $string
+     * @param $out
+     *
+     * @return mixed|null
+     */
+    function issetString( $arg, $string, $out )
+    {
+        if ( issetNull($arg, $string) ) {
+            return issetNull($arg, $string);
+        } else {
+            return $out;
+        }
+    }
+}
 if ( !function_exists('convert_array_to_obj_recursive') ) {
     /**
      * @param $a
@@ -134,9 +172,9 @@ if ( !function_exists('savePageID') ) {
      */
     function savePageID( $pageID )
     {
-        $permission = \app\models\Permissions::find()->where([ 'name' => $pageID ])->one();
+        $permission = Anggagewor\Ngmod\Models\Permissions::find()->where([ 'name' => $pageID ])->one();
         if ( !$permission ) {
-            $modelPermission       = new \app\models\Permissions();
+            $modelPermission       = new Anggagewor\Ngmod\Models\Permissions();
             $modelPermission->name = $pageID;
             $modelPermission->save();
         }

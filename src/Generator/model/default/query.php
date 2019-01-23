@@ -24,7 +24,7 @@ echo "<?php\n";
 
 /**
 * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
-* Copyright 2018 - Angga Purnama
+* Copyright 2019 - Angga Purnama
 <anggagewor@gmail.com>
 * Permission is hereby granted, free of charge,
 * to any person obtaining a copy of this software and associated documentation files (the "Software"),

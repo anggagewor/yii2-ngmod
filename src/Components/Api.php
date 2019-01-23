@@ -1,7 +1,7 @@
 <?php
 /**
  * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
- * Copyright 2018 - Angga Purnama <anggagewr@gmail.com>
+ * Copyright 2019 - Angga Purnama <anggagewr@gmail.com>
  * Permission is hereby granted, free of charge,
  * to any person obtaining a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction,
@@ -21,10 +21,20 @@
 namespace Anggagewor\Ngmod\Components;
 
 use Yii;
+use yii\base\Component;
 
-class Api
+/**
+ * Class for api.
+ */
+class Api extends Component
 {
-
+	/**
+	 *
+	 * @param      int  $header_status  The header status
+	 * @param      array  $datas          The datas
+	 *
+	 * @return     $datas 
+	 */
     public function results( $header_status, $datas )
     {
         Yii::$app->response->statusCode = (integer)$header_status;

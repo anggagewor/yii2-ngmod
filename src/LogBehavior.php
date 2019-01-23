@@ -1,7 +1,7 @@
 <?php
 /**
  * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
- * Copyright 2018 - Angga Purnama <anggagewor@gmail.com>
+ * Copyright 2019 - Angga Purnama <anggagewor@gmail.com>
  * Permission is hereby granted, free of charge,
  * to any person obtaining a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction,
@@ -30,7 +30,7 @@ use yii\db\ActiveRecord;
 /**
  * Class LogBehavior
  *
- * @package app\components
+ * @package Anggagewor\Ngmod
  *
  * @property array           $oldAttributes
  * @property null|string|int $userId

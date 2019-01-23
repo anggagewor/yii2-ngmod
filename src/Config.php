@@ -1,7 +1,7 @@
 <?php
 /**
  * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
- * Copyright 2018 - Angga Purnama <anggagewor@gmail.com>
+ * Copyright 2019 - Angga Purnama <anggagewor@gmail.com>
  * Permission is hereby granted, free of charge,
  * to any person obtaining a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction,
@@ -106,6 +106,8 @@ class Config
      *
      * @param string $directory the application base directory
      * @param bool   $initEnv   whether to initialize the Yii environment. Default is `true`.
+     *
+     * @throws \Exception
      */
     public function __construct( $directory, $initEnv = true )
     {
@@ -116,12 +118,9 @@ class Config
     }
 
     /**
-     * Init the Yii environment from environment variables.
+     * @param null $directory
      *
-     * If $directory is passed and contains a `.env` file, that file is loaded
-     * with `Dotenv` first.
-     *
-     * @param string|null $directory the directory to check for an `.env` file
+     * @throws \Exception
      */
     public static function initEnv( $directory = null )
     {
@@ -153,6 +152,7 @@ class Config
      *                         this case. Default is `false`.
      *
      * @return mixed the content of the environment variable or $default if not set
+     * @throws \Exception
      */
     public static function env( $name, $default = null, $required = false )
     {
@@ -178,6 +178,7 @@ class Config
      * @param bool        $initEnv   whether to initialize the Yii environment. Default is `true`.
      *
      * @return static the Config instance for that application directory
+     * @throws \Exception
      */
     public static function bootstrap( $directory, $vendor = null, $initEnv = true )
     {

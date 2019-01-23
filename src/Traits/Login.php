@@ -1,7 +1,7 @@
 <?php
 /**
  * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
- * Copyright 2018 - Angga Purnama <anggagewor@gmail.com>
+ * Copyright 2019 - Angga Purnama <anggagewor@gmail.com>
  * Permission is hereby granted, free of charge,
  * to any person obtaining a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction,
@@ -21,16 +21,22 @@
 namespace Anggagewor\Ngmod\Traits;
 
 
-use app\models\AccessToken;
-use app\module\user\models\User;
+use Anggagewor\Ngmod\Facades\User;
+use Anggagewor\Ngmod\Models\AccessToken;
 use Yii;
 
 trait Login
 {
+    /**
+     * @param $token
+     *
+     * @return bool
+     */
     public function loginWithToken( $token )
     {
-        $token    = AccessToken::find()->where([ 'token' => $token ])->one();
-        $identity = User::findIdentity($token->user_id);
+        $token     = AccessToken::find()->where([ 'token' => $token ])->one();
+        $userClass = User::getIdentityClass();
+        $identity  = $userClass::findIdentity($token->user_id);
         return Yii::$app->user->login($identity, 0);
     }
 }

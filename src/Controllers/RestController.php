@@ -1,7 +1,7 @@
 <?php
 /**
  * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
- * Copyright 2018 - Angga Purnama <angga@mifx.com>
+ * Copyright 2019 - Angga Purnama <anggagewor@gmail.com>
  * Permission is hereby granted, free of charge,
  * to any person obtaining a copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction,
@@ -21,11 +21,59 @@
 namespace Anggagewor\Ngmod\Controllers;
 
 use yii\web\Controller;
-
+use Anggagewor\Ngmod\Models\Options;
+use Anggagewor\Ngmod\Traits\AuthorizationCode;
+use Anggagewor\Ngmod\Traits\Request;
+use Anggagewor\Ngmod\Traits\AccessToken;
+use Anggagewor\Ngmod\Traits\Login;
+use Yii;
 class RestController extends Controller
 {
+    use AuthorizationCode, Request, AccessToken, Login;
     public function beforeAction( $actions )
     {
-        return parent::beforeAction($actions);
+
+        $timezone = Options::find()->where([ 'name' => 'timezone', 'is_active' => 1 ])->one();
+        if ( $timezone ) {
+            Yii::$app->timeZone = $timezone->value;
+        }
+
+        $request = $this->validate('post');
+        if ( is_array($request) ) {
+            asJson(Yii::$app->api->results($request[ 'status' ], $request));
+            return false;
+        }
+    	$except = Yii::$app->params[ 'BeforePageIDExcept' ];
+    	savePageID(pageID());
+        if ( in_array(pageID(), $except) ) {
+            return true;
+        }
+        
+        $headers = Yii::$app->request->headers;
+        if ( $headers->has('x-access-token') ) {
+            $accessToken = $headers->get('x-access-token');
+        } else {
+            $accessToken = issetNull($post, 'access_token');
+        }
+
+        if ( !empty($accessToken) ) {
+            $checkExp = $this->checkExpiresToken($accessToken);
+            if ( is_array($checkExp) ) {
+                asJson($checkExp);
+                return false;
+            }
+
+            $this->loginWithToken($accessToken);
+            return true;
+        }
+        $this->asJson([
+                'status'  => 0,
+                "name"    => "Unauthorized Error",
+                'code'    => 401,
+                'page_id' => pageID(),
+                'message' => 'could not be authenticated',
+                'data'    => [],
+            ]);
+        return false;
     }
 }
