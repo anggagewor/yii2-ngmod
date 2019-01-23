@@ -7,8 +7,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/anggagewor/yii2-ngmod.svg?style=flat-square)](https://scrutinizer-ci.com/g/anggagewor/yii2-ngmod)
 [![Total Downloads](https://img.shields.io/packagist/dt/anggagewor/yii2-ngmod.svg?style=flat-square)](https://packagist.org/packages/anggagewor/yii2-ngmod)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Yii2 Next Generation Mod
 
 ## Install
 
@@ -17,15 +16,6 @@ Via Composer
 ```bash
 $ composer require anggagewor/yii2-ngmod
 ```
-
-## Using code fixer
-
-We have added a PHP code fixer to standardize our code. It includes Symfony, PSR2 and some contributors rules. 
-
-```bash 
-./vendor/bin/php-cs-fixer fix ./src --config .php_cs
-```
-
 
 ## Contributing
 

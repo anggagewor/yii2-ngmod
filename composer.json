@@ -1,6 +1,6 @@
 {
   "name": "anggagewor/yii2-ngmod",
-  "description": ":package_description",
+  "description": "Yii2 Next Generation Mod",
   "type": "yii2-extention",
   "keywords": [
     "anggagewor",
@@ -26,14 +26,10 @@
     "source": "https://github.com/anggagewor/yii2-ngmod"
   },
   "require": {
+    "php": "^7.1.3",
     "yiisoft/yii2": "*"
   },
-  "require-dev": {
-    "phpunit/phpunit": "~4.0",
-    "friendsofphp/php-cs-fixer": "^2.0",
-    "squizlabs/php_codesniffer": "*",
-    "phpmd/phpmd": "@stable"
-  },
+  "require-dev": {},
   "autoload": {
     "psr-4": {
       "Anggagewor\\Ngmod\\": "src/"
