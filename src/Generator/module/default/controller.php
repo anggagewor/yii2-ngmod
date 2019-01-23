@@ -7,7 +7,7 @@ echo "<?php\n";
 /**
 * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
 * Copyright 2018 - Angga Purnama
-<angga@mifx.com>
+<anggagewor@gmail.com>
 * Permission is hereby granted, free of charge,
 * to any person obtaining a copy of this software and associated documentation files (the "Software"),
 * to deal in the Software without restriction,
@@ -26,9 +26,9 @@ echo "<?php\n";
 
 namespace <?= $generator->getControllerNamespace() ?>;
 
-use app\components\Controller;
+use Anggagewor\Ngmod\Controllers\RestController;
 
-class DefaultController extends Controller
+class DefaultController extends RestController
 {
 
 public function actionIndex()

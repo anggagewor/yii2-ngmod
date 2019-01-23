@@ -24,7 +24,7 @@ use Yii;
 use yii\base\BootstrapInterface;
 use yii\base\Event;
 use yii\base\InvalidConfigException;
-
+use Anggagewor\Ngmod\Facades\Router;
 /**
  * Class ModuleLoader
  *
@@ -112,7 +112,7 @@ class ModuleLoader implements BootstrapInterface
         }
         // Append URL Rules
         if ( isset($config[ 'urlManagerRules' ]) ) {
-            Yii::$app->urlManager->addRules($config[ 'urlManagerRules' ], false);
+            Router::addRules($config[ 'urlManagerRules' ], false);
         }
         $moduleConfig = [
             'class'   => $config[ 'class' ],

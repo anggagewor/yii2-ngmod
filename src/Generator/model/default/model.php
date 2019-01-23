@@ -65,7 +65,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
 public function behaviors()
 {
 return [
-'app\components\LogBehavior'
+'Anggagewor\Ngmod\LogBehavior'
 ];
 }
 
