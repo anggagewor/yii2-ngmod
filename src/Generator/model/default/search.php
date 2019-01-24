@@ -69,9 +69,14 @@ class <?= $className.'Search' ?> extends <?php echo $className;?>
         $query  = <?php echo $className;?>::find()->asArray(true)
                           ->limit($limit)
                           ->offset($offset);
-        if ( isset($params[ 'id' ]) ) {
-            $query->andFilterWhere([ 'id' => $params[ 'id' ] ]);
-        }
+<?php foreach ( $properties as $property => $data ): ?>
+  <?php if($data['type'] == 'int'):?>
+    ( isset($params[ '<?php echo str_replace('$','',$property);?>' ]) ) ? $query->andFilterWhere([ '<?php echo str_replace('$','',$property);?>' => $params[ '<?php echo str_replace('$','',$property);?>' ] ]) : null;
+  <?php endif;?>
+    <?php if($data['type'] == 'string'):?>
+    ( isset($params[ '<?php echo str_replace('$','',$property);?>' ]) ) ? $query->andFilterWhere([ 'ilike', '<?php echo str_replace('$','',$property);?>' ,$params[ '<?php echo str_replace('$','',$property);?>' ] ]) : null;
+  <?php endif;?>
+<?php endforeach; ?>
         if ( isset($order) ) {
             /**
              * @params int $sort
