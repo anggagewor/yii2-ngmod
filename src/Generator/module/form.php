@@ -27,5 +27,7 @@
     <?php
     echo $form->field($generator, 'moduleClass');
     echo $form->field($generator, 'moduleID');
+    echo $form->field($generator, 'authorName');
+    echo $form->field($generator, 'authorEmail');
     ?>
 </div>

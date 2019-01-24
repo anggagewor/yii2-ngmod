@@ -36,6 +36,8 @@ class Generator extends \yii\gii\Generator
 {
     public $moduleClass;
     public $moduleID;
+    public $authorName;
+    public $authorEmail;
 
 
     /**
@@ -61,7 +63,7 @@ class Generator extends \yii\gii\Generator
     {
         return array_merge(parent::rules(), [
                 [ [ 'moduleID', 'moduleClass' ], 'filter', 'filter' => 'trim' ],
-                [ [ 'moduleID', 'moduleClass' ], 'required' ],
+                [ [ 'moduleID', 'moduleClass','authorName','authorEmail' ], 'required' ],
                 [
                     [ 'moduleID' ],
                     'match',
@@ -127,7 +129,7 @@ EOD;
      */
     public function requiredTemplates()
     {
-        return [ 'module.php', 'controller.php', 'erp.php', 'routes.php', 'LICENSE.md','.gitkeep' ];
+        return [ '.gitattributes','.gitignore','CHANGELOG.md','CONTRIBUTING.md','README.md','module.php','CONDUCT.md', 'controller.php', 'erp.php', 'routes.php', 'LICENSE.md','.gitkeep' ];
     }
 
     /**
@@ -156,6 +158,30 @@ EOD;
         $files[]    = new CodeFile(
             $modulePath . '/LICENSE.md',
             $this->render("LICENSE.md")
+        );
+        $files[]    = new CodeFile(
+            $modulePath . '/.gitattributes',
+            $this->render(".gitattributes")
+        );
+        $files[]    = new CodeFile(
+            $modulePath . '/.gitignore',
+            $this->render(".gitignore")
+        );
+        $files[]    = new CodeFile(
+            $modulePath . '/CHANGELOG.md',
+            $this->render("CHANGELOG.md")
+        );
+        $files[]    = new CodeFile(
+            $modulePath . '/CONTRIBUTING.md',
+            $this->render("CONTRIBUTING.md")
+        );
+        $files[]    = new CodeFile(
+            $modulePath . '/README.md',
+            $this->render("README.md")
+        );
+        $files[]    = new CodeFile(
+            $modulePath . '/CONDUCT.md',
+            $this->render("CONDUCT.md")
         );
         $files[]    = new CodeFile(
             $modulePath . '/models/.gitkeep',

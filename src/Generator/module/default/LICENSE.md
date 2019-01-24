@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) Angga Purnama
+Copyright (c) <?php echo date('Y');?> - <?php echo $generator->authorName;?> <<?php echo $generator->authorEmail;?>>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
