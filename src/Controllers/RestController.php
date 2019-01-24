@@ -50,6 +50,7 @@ class RestController extends Controller
         }
         
         $headers = Yii::$app->request->headers;
+        $post     = Yii::$app->request->post();
         if ( $headers->has('x-access-token') ) {
             $accessToken = $headers->get('x-access-token');
         } else {
@@ -66,14 +67,12 @@ class RestController extends Controller
             $this->loginWithToken($accessToken);
             return true;
         }
-        $this->asJson([
+        $this->asJson(Yii::$app->api->results(401, [
                 'status'  => 0,
-                "name"    => "Unauthorized Error",
-                'code'    => 401,
                 'page_id' => pageID(),
                 'message' => 'could not be authenticated',
                 'data'    => [],
-            ]);
+            ]));
         return false;
     }
 }
