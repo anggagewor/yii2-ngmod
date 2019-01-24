@@ -32,13 +32,13 @@ trait AccessToken
 
     public function getToken( $authorization_code )
     {
-        $token = Anggagewor\Ngmod\Models\AccessToken::find()->where([ 'authorization_code' => $authorization_code ])->one();
+        $token = \Anggagewor\Ngmod\Models\AccessToken::find()->where([ 'authorization_code' => $authorization_code ])->one();
         return $token->token;
     }
 
     public function getRefreshCode( $access_token )
     {
-        $token = Anggagewor\Ngmod\Models\AccessToken::find()->where([ 'token' => $access_token ])->one();
+        $token = \Anggagewor\Ngmod\Models\AccessToken::find()->where([ 'token' => $access_token ])->one();
         return $token->refresh_token;
     }
 
@@ -85,7 +85,7 @@ trait AccessToken
      */
     public function checkToken( $access_token )
     {
-        $accessToken = Anggagewor\Ngmod\Models\AccessToken::find()->where([ 'token' => $access_token ])->one();
+        $accessToken = \Anggagewor\Ngmod\Models\AccessToken::find()->where([ 'token' => $access_token ])->one();
         if ( !$accessToken ) {
             $result = [
                 "name"    => "No Data Found",

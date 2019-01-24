@@ -38,6 +38,11 @@ class Api extends Component
     public function results( $header_status, $datas )
     {
         Yii::$app->response->statusCode = (integer)$header_status;
-        return $datas;
+        $adds = [
+        	'status'=> ($header_status==200)?1:0,
+        	'code' => $header_status
+        ];
+        $data = $adds + $datas ;
+        return $data;
     }
 }

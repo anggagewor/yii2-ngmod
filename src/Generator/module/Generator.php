@@ -127,7 +127,7 @@ EOD;
      */
     public function requiredTemplates()
     {
-        return [ 'module.php', 'controller.php', 'erp.php', 'routes.php', 'LICENSE.md' ];
+        return [ 'module.php', 'controller.php', 'erp.php', 'routes.php', 'LICENSE.md','.gitkeep' ];
     }
 
     /**
@@ -156,6 +156,10 @@ EOD;
         $files[]    = new CodeFile(
             $modulePath . '/LICENSE.md',
             $this->render("LICENSE.md")
+        );
+        $files[]    = new CodeFile(
+            $modulePath . '/models/.gitkeep',
+            $this->render(".gitkeep")
         );
 
         return $files;

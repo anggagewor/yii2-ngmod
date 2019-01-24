@@ -247,7 +247,7 @@ class Generator extends \yii\gii\Generator
     public function requiredTemplates()
     {
         // @todo make 'query.php' to be required before 2.1 release
-        return [ 'model.php'/*, 'query.php'*/ ];
+        return [ 'model.php','search.php'/*, 'query.php'*/ ];
     }
 
     /**
@@ -309,6 +309,10 @@ class Generator extends \yii\gii\Generator
             $files[]        = new CodeFile(
                 Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $modelClassName . '.php',
                 $this->render('model.php', $params)
+            );
+            $files[]        = new CodeFile(
+                Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/search/' . $modelClassName . 'Search.php',
+                $this->render('search.php', $params)
             );
 
             // query :
