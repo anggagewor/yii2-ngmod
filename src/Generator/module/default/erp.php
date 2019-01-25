@@ -31,7 +31,7 @@ use <?php echo $ns; ?>\Module;
 
 return [
 'id'              => '<?php echo $generator->moduleID; ?>',
-'class'           => Module::className(),
+'class'           => Module::class,
 'urlManagerRules' => require __DIR__ . '/routes.php',
 'name' => '<?php echo ucfirst($generator->moduleID); ?> Module',
 'description' => 'Lorem Ipsum',
