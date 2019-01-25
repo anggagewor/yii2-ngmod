@@ -9,6 +9,16 @@
 
 Yii2 Next Generation Mod
 
+# Disclaimer
+
+Mod ini adalah gabungan dari beberapa package yang kami kumpulkan dan convert menjadi satu, jika kalian penulis dari library yang ada disini dan ingin di hapus, silakan untuk menghubungi kami untuk kami takedown library nya.
+
+Berikut adalah list library yang kami pakai dan kami modifikasi agar sesuai dengan kebutuhan kami,
+
+- [yii2-configloader](https://github.com/codemix/yii2-configloader) `BSD-3-Clause license`
+- [yii2-gii-migration](https://github.com/yiimaker/yii2-gii-migration) `BSD-3-Clause license`
+- [yii2-module-autoloader](https://github.com/bmsrox/yii2-module-autoloader/blob/master/ModuleLoader.php) `MIT`
+
 ## Install
 
 Via Composer
