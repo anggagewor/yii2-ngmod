@@ -16,6 +16,117 @@ Via Composer
 ```bash
 $ composer require anggagewor/yii2-ngmod
 ```
+## Usage 
+
+### Initialize Yii environment and load configuration
+
+Let's finally show a full example that demonstrates how to use all the mentioned features in one go. A typical setup will use the following files:
+
+`config/web.php`
+
+```php
+<?php
+$config = [
+    'bootstrap'  => [
+	    // other bootstrap 
+	    'Anggagewor\Ngmod\Bootstraps\ModuleLoader' 
+	],
+];
+```
+
+`config/console.php`
+
+```php
+<?php
+$config = [
+    'bootstrap'  => [
+	    // other bootstrap 
+	    'Anggagewor\Ngmod\Bootstraps\ModuleLoader' 
+	],
+];
+```
+
+`.env`
+
+```env
+YII_DEBUG=1
+YII_ENV=dev
+
+DB_DSN=mysql:host=db.example.com;dbname=web
+DB_USER=pengguna
+DB_PASSWORD=rahasia
+```
+
+`config/web.php`
+
+```php
+<?php
+/* @var Anggagewor\Ngmod\Config $this */
+return [
+    'components' => [
+        
+        'db' => [
+            'class'     => self::env('DB_CLASS', 'yii\db\Connection'),
+            'dsn'       => self::env('DB_DSN', 'mysql:host=db;dbname=web'),
+            'username'  => self::env('DB_USER', 'web'),
+            'password'  => self::env('DB_PASSWORD', 'web'),
+        ],
+    ]
+];
+```
+`config/console.php`
+
+```php
+<?php
+/* @var Anggagewor\Ngmod\Config $this */
+
+$web = $this->web();
+return [
+    // ...
+    'components' => [
+        'db' => $web['components']['db'],
+    ]
+];
+```
+
+`web/index.php`
+
+```php
+<?php
+use Anggagewor\Ngmod\Config;
+
+require(__DIR__ . '/../vendor/autoload.php');
+$config = new Config(__DIR__ . '/..');
+require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
+
+Yii::createObject('yii\web\Application', [$config->web()])->run();
+```
+
+`yii`
+
+```php
+<?php
+use Anggagewor\Ngmod\Config;
+
+require(__DIR__ . '/vendor/autoload.php');
+$config = Config::bootstrap(__DIR__);
+$application = Yii::createObject('yii\console\Application', [$config->console()]);
+exit($application->run());
+```
+
+### For Gii Generator
+
+`config/web.php`
+
+```php
+
+    $config[ 'modules' ][ 'gii' ] = [
+        'class'      => 'yii\gii\Module',
+        'generators' => [
+            'model'  => 'Anggagewor\Ngmod\Generator\model\Generator',
+            'module' => 'Anggagewor\Ngmod\Generator\module\Generator',
+        ]
+```
 
 ## Contributing
 
