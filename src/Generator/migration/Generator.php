@@ -25,10 +25,6 @@ use yii\gii\CodeFile;
 use yii\helpers\ArrayHelper;
 use yii\validators\RequiredValidator;
 
-/**
- * Class Generator
- * @package ymaker\gii\migration
- */
 class Generator extends \yii\gii\Generator
 {
 

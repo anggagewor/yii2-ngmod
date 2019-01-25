@@ -6,8 +6,7 @@ echo "<?php\n";
 ?>
 /**
 * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
-* Copyright 2019 - Angga Purnama
-<anggagewor@gmail.com>
+* Copyright <?php echo date('Y');?> - <?php echo $generator->authorName;?> <<?php echo $generator->authorEmail;?>>
 * Permission is hereby granted, free of charge,
 * to any person obtaining a copy of this software and associated documentation files (the "Software"),
 * to deal in the Software without restriction,
@@ -31,8 +30,8 @@ use Anggagewor\Ngmod\Controllers\RestController;
 class DefaultController extends RestController
 {
 
-public function actionIndex()
-{
-return $this->asJson(['oke']);
-}
+	public function actionIndex()
+	{
+		return $this->asJson(['oke']);
+	}
 }

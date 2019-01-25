@@ -5,8 +5,7 @@ echo "<?php\n";
 ?>
 /**
 * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
-* Copyright 2019 - Angga Purnama
-<anggagewor@gmail.com>
+* Copyright <?php echo date('Y');?> - <?php echo $generator->authorName;?> <<?php echo $generator->authorEmail;?>>
 * Permission is hereby granted, free of charge,
 * to any person obtaining a copy of this software and associated documentation files (the "Software"),
 * to deal in the Software without restriction,
@@ -23,5 +22,5 @@ echo "<?php\n";
 * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 return [
-'api/v1/<?php echo $generator->moduleID; ?>'                           => '<?php echo $generator->moduleID; ?>/default/index',
+	'api/v1/<?php echo $generator->moduleID; ?>' => '<?php echo $generator->moduleID; ?>/default/index',
 ];

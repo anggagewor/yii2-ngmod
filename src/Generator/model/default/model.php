@@ -19,8 +19,7 @@ echo "<?php\n";
 
 /**
 * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
-* Copyright 2019 - Angga Purnama
-<anggagewor@gmail.com>
+* Copyright <?php echo date('Y');?> - <?php echo $generator->authorName;?> <<?php echo $generator->authorEmail;?>>
 * Permission is hereby granted, free of charge,
 * to any person obtaining a copy of this software and associated documentation files (the "Software"),
 * to deal in the Software without restriction,
@@ -59,23 +58,24 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
 {
 
 
-/**
-* @return array
-*/
-public function behaviors()
-{
-return [
-'Anggagewor\Ngmod\LogBehavior'
-];
-}
+    /**
+    * @return array
+    */
+    public function behaviors()
+    {
+        return [
+            'Anggagewor\Ngmod\LogBehavior'
+        ];
+    }
 
-/**
-* {@inheritdoc}
-*/
-public static function tableName()
-{
-return '<?= $generator->generateTableName($tableName) ?>';
-}
+    /**
+    * {@inheritdoc}
+    */
+    public static function tableName()
+    {
+        return '<?= $generator->generateTableName($tableName) ?>';
+    }
+
 <?php if ( $generator->db !== 'db' ): ?>
 
     /**
@@ -87,25 +87,25 @@ return '<?= $generator->generateTableName($tableName) ?>';
     }
 <?php endif; ?>
 
-/**
-* {@inheritdoc}
-*/
-public function rules()
-{
-return [<?= empty($rules) ? '' : ( "\n            " . implode(",\n            ", $rules) . ",\n        " ) ?>];
-}
+    /**
+    * {@inheritdoc}
+    */
+    public function rules()
+    {
+        return [<?= empty($rules) ? '' : ( "\n            " . implode(",\n            ", $rules) . ",\n        " ) ?>];
+    }
 
-/**
-* {@inheritdoc}
-*/
-public function attributeLabels()
-{
-return [
-<?php foreach ( $labels as $name => $label ): ?>
-    <?= "'$name' => " . $generator->generateString($label) . ",\n" ?>
-<?php endforeach; ?>
-];
-}
+    /**
+    * {@inheritdoc}
+    */
+    public function attributeLabels()
+    {
+    return [
+    <?php foreach ( $labels as $name => $label ): ?>
+        <?= "'$name' => " . $generator->generateString($label) . ",\n" ?>
+    <?php endforeach; ?>
+    ];
+    }
 <?php foreach ( $relations as $name => $relation ): ?>
 
     /**

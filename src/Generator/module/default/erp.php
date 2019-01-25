@@ -9,8 +9,7 @@ echo "<?php\n";
 ?>
 /**
 * Licensed under the MIT/X11 License (http://opensource.org/licenses/MIT)
-* Copyright 2019 - Angga Purnama
-<anggagewor@gmail.com>
+* Copyright <?php echo date('Y');?> - <?php echo $generator->authorName;?> <<?php echo $generator->authorEmail;?>>
 * Permission is hereby granted, free of charge,
 * to any person obtaining a copy of this software and associated documentation files (the "Software"),
 * to deal in the Software without restriction,
@@ -30,11 +29,11 @@ echo "<?php\n";
 use <?php echo $ns; ?>\Module;
 
 return [
-'id'              => '<?php echo $generator->moduleID; ?>',
-'class'           => Module::class,
-'urlManagerRules' => require __DIR__ . '/routes.php',
-'name' => '<?php echo ucfirst($generator->moduleID); ?> Module',
-'description' => 'Lorem Ipsum',
-'version' => '1.0.0',
+    'id'              => '<?php echo $generator->moduleID; ?>',
+    'class'           => Module::class,
+    'urlManagerRules' => require __DIR__ . '/routes.php',
+    'name'            => '<?php echo ucfirst($generator->moduleID); ?> Module',
+    'description'     => 'Lorem Ipsum',
+    'version'         => '1.0.0',
 
 ];

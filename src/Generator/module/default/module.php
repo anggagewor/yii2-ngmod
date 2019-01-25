@@ -36,16 +36,16 @@ namespace <?= $ns ?>;
 
 class <?= $className ?> extends \yii\base\Module
 {
-/**
-* {@inheritdoc}
-*/
-public $controllerNamespace = '<?= $generator->getControllerNamespace() ?>';
+	/**
+	* {@inheritdoc}
+	*/
+	public $controllerNamespace = '<?= $generator->getControllerNamespace() ?>';
 
-/**
-* {@inheritdoc}
-*/
-public function init()
-{
-parent::init();
-}
+	/**
+	* {@inheritdoc}
+	*/
+	public function init()
+	{
+		parent::init();
+	}
 }
