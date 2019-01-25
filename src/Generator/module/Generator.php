@@ -187,6 +187,10 @@ EOD;
             $modulePath . '/models/.gitkeep',
             $this->render(".gitkeep")
         );
+        $files[]    = new CodeFile(
+            $modulePath . '/commands/.gitkeep',
+            $this->render(".gitkeep")
+        );
 
         return $files;
     }
